@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>주문취소, 이럴 땐 이렇게 설정해요</title>
+<style>:root{--bg:#f6f7f9;--card:#ffffff;--text:#1c1f24;--sub:#6b7280;--line:#e4e7ec;--accent:#5fbdb9;--accent-ink:#0b2f2d;--soft:#f1f3f5;--warn:#fff3cd;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);}@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#101215;--card:#1a1d22;--text:#eef0f3;--sub:#9aa3af;--line:#2c3138;--accent:#5fbdb9;--accent-ink:#06302d;--soft:#23272d;--warn:#3a3320;color-scheme:dark;}}:root[data-theme="dark"]{--bg:#101215;--card:#1a1d22;--text:#eef0f3;--sub:#9aa3af;--line:#2c3138;--accent:#5fbdb9;--accent-ink:#06302d;--soft:#23272d;--warn:#3a3320;color-scheme:dark;}*{box-sizing:border-box}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;background:var(--bg);color:var(--text);font-family:'Apple SD Gothic Neo','Pretendard','Malgun Gothic','Noto Sans KR',sans-serif;line-height:1.5}.wrap{max-width:1000px;margin:0 auto;padding:20px 16px 40px}h1{font-size:22px;margin:8px 0 4px}.lead{color:var(--sub);margin:0 0 18px;font-size:14px}.card{background:var(--card);border:1px solid var(--line);border-radius:28px;padding:20px;box-shadow:0 4px 18px rgba(0,0,0,.05)}.hub-title{font-weight:700;font-size:16px;margin:0 0 10px}.chips{display:flex;flex-wrap:wrap;gap:8px}.chip{border:1px solid var(--line);background:var(--soft);color:var(--text);border-radius:999px;padding:9px 15px;font-size:14px;cursor:pointer;font-family:inherit}.chip:hover{border-color:var(--accent)}.chip.on{background:var(--accent);color:var(--accent-ink);border-color:var(--accent);font-weight:700}.player{margin-top:18px}.phead{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:12px;flex-wrap:wrap}.ptitle{font-size:24px;font-weight:900;margin:0;letter-spacing:-.02em}.btns{display:flex;gap:8px}.btn{border:1px solid var(--line);background:var(--card);color:var(--text);border-radius:12px;padding:9px 16px;font-size:14px;cursor:pointer;font-family:inherit}.btn[disabled]{opacity:.4;cursor:default}.dots{display:flex;gap:6px;margin:0 0 10px}.dot{height:5px;flex:1;border-radius:3px;background:var(--line)}.dot.on{background:var(--accent)}.stage{position:relative;border-radius:24px;overflow:hidden;box-shadow:0 2px 14px rgba(0,0,0,.12);border:1px solid var(--line);background:#fff}.canvas{position:absolute;left:0;top:0;width:1000px;height:640px;transform-origin:0 0;background:#fff;color:#1c1f24;overflow:hidden}.sh-head{height:56px;display:flex;align-items:center;gap:8px;padding:0 24px;font-weight:900;font-size:22px;box-shadow:0 1px 6px rgba(0,0,0,.08);position:relative;z-index:2;background:#fff}.logo-chip{font-size:11px;background:#5fbdb9;color:#fff;border-radius:8px;padding:2px 6px;font-weight:700}.sh-body{display:flex;height:584px}.sh-side{width:220px;border-right:1px solid #eceef1;background:#fff;padding-top:14px;flex:none;overflow:hidden}.q-title{font-weight:700;font-size:13px;padding:0 16px 8px}.q-row{display:flex;gap:6px;padding:0 10px 12px;border-bottom:1px solid #eceef1;margin-bottom:6px}.q-item{width:64px;text-align:center;font-size:11px;background:none;border:0;cursor:pointer;color:#333;font-family:inherit;padding:2px}.q-ic{width:42px;height:42px;border-radius:50%;background:#eef3ff;margin:0 auto 4px;display:flex;align-items:center;justify-content:center;font-size:19px}.nv{display:flex;align-items:center;gap:10px;padding:9px 18px;font-size:14px;color:#222;background:none;border:0;width:100%;text-align:left;cursor:pointer;font-family:inherit}.nv .ic{width:24px;text-align:center;font-size:18px}.nv.act{background:#eef3ff;color:#2f6bf0;font-weight:700}.nv-sep{border-top:1px solid #eceef1;margin:6px 0}.sh-main{flex:1;padding:22px 32px;background:#fff;overflow:hidden;position:relative}.pg{font-size:22px;font-weight:800;margin:0 0 14px}.bx{border:1px solid #e4e7ec;border-radius:10px;padding:16px 20px;margin-bottom:12px;background:#fff}.bx h3{margin:0 0 4px;font-size:18px}.bx .s{color:#777;font-size:13px}.line2{display:flex;justify-content:space-between;align-items:center}.tgl{position:relative;width:46px;height:26px;border-radius:13px;background:#d5d9df;border:0;cursor:pointer;flex:none}.tgl::after{content:"";position:absolute;top:3px;left:3px;width:20px;height:20px;border-radius:50%;background:#fff;transition:.2s}.tgl.on{background:#2f6bf0}.tgl.on::after{left:23px}.avatar{width:54px;height:54px;border-radius:14px;background:#efeeea;color:#aaa;font-size:9px;display:flex;align-items:center;justify-content:center;flex:none}.kv{display:flex;align-items:center;gap:14px;margin-top:8px;font-size:14px}.kv .k{width:72px;color:#777;font-size:12px}.pill{display:inline-block;padding:2px 9px;border-radius:6px;font-size:12px;font-weight:700}.pill.g{background:#d9f5e3;color:#18794e}.pill.o{background:#ffe9d6;color:#c2560c}.u{text-decoration:underline}.minis{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:12px}.mini{border:1px solid #e4e7ec;border-radius:10px;padding:12px;font-size:12px;color:#777}.mini b{display:block;font-size:20px;color:#1c1f24}.hint{font-size:13px;color:#777;margin-top:6px}.tabs2{display:flex;gap:26px;border-bottom:1px solid #eceef1;margin-bottom:16px}.tb{font-size:18px;color:#444;background:none;border:0;padding:6px 2px 10px;cursor:pointer;font-family:inherit;border-bottom:3px solid transparent}.tb.act{font-weight:800;color:#111;border-bottom-color:#111}.prev-btn{margin-left:auto;border:1px solid #2f6bf0;color:#2f6bf0;border-radius:8px;padding:8px 14px;font-size:14px;background:#fff;cursor:pointer;font-family:inherit}.tbl .tr{display:grid;grid-template-columns:150px 1fr 1fr 90px;align-items:center;padding:8px 6px;border-bottom:1px solid #eceef1;font-size:14px}.tbl .th{color:#777;font-size:13px}.day{display:inline-flex;width:30px;height:30px;border-radius:50%;background:#f1f3f5;align-items:center;justify-content:center;font-weight:700;font-size:12px;margin-right:12px}.day.r{background:#fdeaea;color:#d33}.chg{border:1px solid #2f6bf0;color:#2f6bf0;background:#fff;border-radius:6px;padding:6px 14px;font-size:13px;cursor:pointer;font-family:inherit}.info{background:#f4f5f7;border-radius:10px;padding:12px 16px;margin-top:10px;font-size:13px;color:#555}.info b{display:block;color:#222;margin-bottom:2px}.store-h{font-size:22px;font-weight:800}.store-s{color:#888;font-size:13px;margin-bottom:10px}.srch{background:#f1f3f5;border-radius:8px;padding:10px 14px;color:#aaa;font-size:13px;width:300px}.pills{display:flex;gap:8px;margin:10px 0}.pl{border:1px solid #111;border-radius:999px;padding:6px 16px;font-size:14px;background:#fff;font-family:inherit}.pl.on{background:#111;color:#fff}.chk{width:24px;height:24px;border:1px solid #cfd4db;border-radius:5px;background:#fff;cursor:pointer;flex:none;display:inline-flex;align-items:center;justify-content:center;font-size:14px;color:#fff;padding:0}.chk.on{background:#2f6bf0;border-color:#2f6bf0}.grp{border:1px solid #e4e7ec;border-radius:12px;margin-bottom:10px;overflow:hidden}.gh{display:flex;align-items:center;gap:12px;padding:10px 16px;font-weight:800;font-size:16px}.it{display:flex;align-items:center;gap:12px;padding:8px 16px;border-top:1px solid #eceef1}.it .n{font-weight:700;font-size:14px}.it .p{font-size:13px}.tag{background:#eceef1;border-radius:4px;padding:1px 7px;font-size:12px;font-weight:700;margin-right:6px;color:#444}.dimtxt{color:#aaa}.rel{margin-left:auto;border:1px solid #d5d9df;background:#fff;border-radius:6px;padding:7px 14px;font-size:13px;cursor:pointer;font-family:inherit}.bar{position:absolute;left:32px;right:32px;bottom:14px;border:1px solid #e4e7ec;border-radius:12px;background:#fff;box-shadow:0 4px 16px rgba(0,0,0,.08);padding:12px 18px;display:flex;align-items:center;justify-content:space-between;font-size:16px;font-weight:700}.bar em{color:#2f6bf0;font-style:normal}.bb2{border:1px solid #2f6bf0;background:#fff;color:#2f6bf0;border-radius:8px;padding:10px 22px;font-size:15px;font-weight:700;cursor:pointer;font-family:inherit;margin-left:8px;opacity:.45}.bb2.pri{background:#2f6bf0;color:#fff}.bb2.en{opacity:1}.seg2{display:flex;background:#f1f3f5;border-radius:10px;padding:4px;margin-bottom:12px}.seg2 div{flex:1;text-align:center;padding:9px;font-size:14px;border-radius:8px;color:#777}.seg2 .on{background:#fff;color:#111;font-weight:800}.mapbox{position:relative;height:250px;background:#f6f6f6;border-radius:6px;overflow:hidden}.rchips{position:absolute;left:10px;top:10px;display:flex;background:#fff;border-radius:4px;z-index:3;box-shadow:0 1px 4px rgba(0,0,0,.12)}.rc{border:0;background:#fff;padding:10px 14px;font-size:14px;cursor:pointer;font-family:inherit;border-right:1px solid #eee}.rc.on{font-weight:800;color:#2f6bf0}.edit{color:#2f6bf0;font-weight:700;font-size:15px;background:none;border:0;cursor:pointer;font-family:inherit}.rv-head{height:52px;background:#17181b;display:flex;align-items:center;gap:14px;padding:0 20px;color:#fff;font-weight:900;font-size:20px}.rv-st{font-size:13px;font-weight:600;background:#2a2c31;border-radius:8px;padding:6px 12px;color:#ff8a4c}.rv-conn{margin-left:auto;border:1px solid #fff;border-radius:6px;padding:5px 12px;font-size:13px;font-weight:600}.rv-body{display:flex;height:588px;background:#17181b}.rv-rail{width:96px;flex:none;padding-top:20px;color:#ddd}.rv-it{display:block;width:84px;margin:0 auto 14px;text-align:center;font-size:13px;color:#ddd;background:none;border:0;cursor:pointer;font-family:inherit;padding:8px 2px;border-radius:12px}.rv-it .ic{display:block;font-size:26px;margin-bottom:2px}.rv-it.act{background:#3a3c42;color:#fff}.rv-panel{flex:1;background:#fff;border-top-left-radius:22px;display:flex;overflow:hidden}.rv-sub{width:196px;padding:22px 10px;flex:none}.sb{display:flex;align-items:center;gap:10px;width:100%;text-align:left;border:0;background:none;padding:11px 12px;font-size:14px;color:#222;border-radius:8px;cursor:pointer;font-family:inherit}.sb.act{background:#eef3ff;color:#2f6bf0;font-weight:700}.rv-main{flex:1;padding:22px 26px;overflow:hidden;position:relative}.vol{display:flex;gap:6px;align-items:center;margin:10px 0 18px}.vs{flex:1;height:22px;border:0;border-radius:4px;background:#e4e6ea;cursor:pointer;padding:0}.vs.on{background:#3b78f5}.sel{border:1px solid #d5d9df;border-radius:8px;padding:12px 14px;display:flex;justify-content:space-between;width:300px;font-size:14px}.rowx{display:flex;justify-content:space-between;align-items:center;padding:10px 0;font-size:15px}.toast2{position:absolute;left:26px;right:26px;bottom:16px;background:#e6f6ee;color:#18794e;border-radius:12px;padding:12px 16px;font-weight:700;font-size:14px}.toast3{margin-top:12px;background:#e6f6ee;color:#18794e;border-radius:10px;padding:11px 14px;font-weight:700;font-size:14px}.modal{position:absolute;inset:0;background:rgba(0,0,0,.4);display:flex;align-items:center;justify-content:center;z-index:3}.dlg{background:#fff;border-radius:16px;padding:22px;width:420px}.dlg h4{margin:0 0 4px;font-size:18px}.dlg p{margin:0 0 14px;color:#777;font-size:13px}.dl{display:flex;gap:10px;margin-bottom:16px}.dl .sel{width:auto;flex:1}.dact{display:flex;gap:8px;justify-content:flex-end}.hl{position:relative;z-index:6;box-shadow:0 0 0 4px #5fbdb9,0 0 0 11px rgba(95,189,185,.30);border-radius:8px;animation:pulse 1.6s infinite}@keyframes pulse{0%,100%{box-shadow:0 0 0 4px #5fbdb9,0 0 0 11px rgba(95,189,185,.30)}50%{box-shadow:0 0 0 4px #5fbdb9,0 0 0 16px rgba(95,189,185,.12)}}.tip{position:absolute;z-index:9;background:var(--accent);color:var(--accent-ink);font-weight:800;font-size:17px;padding:14px 18px;border-radius:18px;box-shadow:0 8px 24px rgba(0,0,0,.25);display:flex;align-items:center;gap:12px;max-width:440px}.tip::before{content:"";position:absolute;left:var(--ax,50%);top:-7px;width:14px;height:14px;background:var(--accent);transform:translateX(-50%) rotate(45deg);border-radius:3px}.tip.up::before{top:auto;bottom:-7px}.tip button{border:0;background:none;color:var(--accent-ink);font-size:20px;cursor:pointer;padding:0;line-height:1}.shake{animation:shake .3s}@keyframes shake{25%{transform:translateX(-4px)}75%{transform:translateX(4px)}}.finish{margin-top:14px;text-align:center;padding:18px;border-radius:16px;background:var(--card);border:1px solid var(--line)}.finish h3{margin:0 0 6px;font-size:18px}.finish p{margin:0 0 12px;color:var(--sub);font-size:14px}.fb{display:inline-block;margin:0 4px;padding:12px 18px;border-radius:12px;border:1px solid var(--line);background:var(--card);color:var(--text);font-size:14px;font-weight:700;cursor:pointer;font-family:inherit}.fb.pri{background:#3b78f5;color:#fff;border-color:#3b78f5}.note{text-align:center;color:var(--sub);font-size:13px;margin:16px 0 4px}.proto{margin-top:18px;padding:12px 14px;border-radius:12px;background:var(--warn);font-size:13px}[hidden]{display:none!important}.hook-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:12px}.hcard{border:1px solid var(--line);border-radius:20px;background:var(--card);padding:14px;text-align:left;cursor:pointer;font-family:inherit;color:var(--text);transition:.15s}.hcard:hover{transform:translateY(-3px);border-color:var(--accent);box-shadow:0 8px 20px rgba(0,0,0,.08)}.hcard.on{outline:2px solid var(--accent)}.hth{height:84px;border-radius:14px;display:flex;align-items:center;justify-content:center;gap:8px;font-size:30px;margin-bottom:10px}.hth span{display:inline-block;animation:bob 2s ease-in-out infinite}.hth span:nth-child(2){animation-delay:.3s}.hth span:nth-child(3){animation-delay:.6s}@keyframes bob{50%{transform:translateY(-6px)}}.htag{display:inline-block;font-size:11px;font-weight:800;color:#0b2f2d;background:var(--accent);border-radius:999px;padding:2px 9px;margin-bottom:6px}.hq{font-size:14px;font-weight:700;line-height:1.45}.hgo{margin-top:8px;font-size:12px;color:var(--sub)}.story{position:relative;border-radius:24px;overflow:hidden;height:390px;box-shadow:0 2px 14px rgba(0,0,0,.12);cursor:pointer;color:#1c1f24;border:1px solid var(--line)}.fr{position:absolute;inset:0;opacity:0;transition:opacity .5s;display:flex;flex-direction:column;pointer-events:none}.fr.on{opacity:1}.sc{position:relative;flex:1;overflow:hidden}.cap{padding:14px 22px 22px;font-size:19px;font-weight:800;text-align:center;min-height:76px;display:flex;align-items:center;justify-content:center;background:rgba(255,255,255,.55)}.actor{position:absolute;transform:translate(-50%,-50%);line-height:1}.actor i{display:inline-block;font-style:normal}.fr.on .a-ring{animation:ring .7s infinite}.fr.on .a-bounce{animation:bounce 1s infinite}.fr.on .a-shake{animation:shk .45s infinite}.fr.on .a-float{animation:flt 2.2s ease-in-out infinite}.fr.on .a-pop{animation:popa .6s both}@keyframes ring{0%,100%{transform:rotate(0)}25%{transform:rotate(-18deg)}75%{transform:rotate(18deg)}}@keyframes bounce{50%{transform:translateY(-12px)}}@keyframes shk{25%{transform:translateX(-5px)}75%{transform:translateX(5px)}}@keyframes flt{50%{transform:translateY(-9px)}}@keyframes popa{0%{transform:scale(.2);opacity:0}70%{transform:scale(1.2)}100%{transform:scale(1);opacity:1}}.bub,.bdg{position:absolute;transform:translate(-50%,-50%);background:#fff;border-radius:16px;padding:9px 14px;font-size:15px;font-weight:700;box-shadow:0 4px 14px rgba(0,0,0,.15);max-width:84%;text-align:center}.bdg{border-radius:10px;font-weight:800}.bub.red,.bdg.red{background:#e5484d;color:#fff}.bub.soft{background:#e8f6f5;color:#0b2f2d}.fr.on .bub{animation:fup .6s .35s both}.fr.on .bdg{animation:popin .55s .15s both}@keyframes fup{0%{opacity:0;transform:translate(-50%,-30%)}100%{opacity:1;transform:translate(-50%,-50%)}}@keyframes popin{0%{transform:translate(-50%,-50%) scale(.3);opacity:0}70%{transform:translate(-50%,-50%) scale(1.15)}100%{transform:translate(-50%,-50%) scale(1);opacity:1}}.drop{position:absolute;top:-12%;width:2px;height:16px;background:rgba(70,110,165,.55);animation:fall 1s linear infinite}@keyframes fall{to{transform:translateY(420px)}}.scta{margin-top:14px}</style>
+
+</head>
+<body>
+<div class="wrap">
+<h1>주문취소, 이럴 땐 이렇게 설정해요</h1>
+<p class="lead">혹시 이런 경험, 있으셨나요? 우리 가게와 닮은 상황을 골라보세요.</p>
+<div class="card">
+<p class="hub-title">혹시 이런 경험, 있으셨죠?</p>
+<div class="hook-grid" id="hooks"></div>
+</div>
+<div class="player" id="storyBox" hidden>
+<div class="card">
+<div class="phead">
+<h2 class="ptitle">혹시 이런 적, 있으셨죠?</h2>
+<div class="btns"><button class="btn" id="s-replay">다시보기</button><button class="btn" id="s-skip">건너뛰기</button></div>
+</div>
+<div class="dots" id="sdots"></div>
+<div class="story" id="story"></div>
+<div class="scta" id="scta"></div>
+</div>
+</div>
+<div class="player" id="player" hidden>
+<div class="card">
+<div class="phead">
+<h2 class="ptitle" id="ptitle"></h2>
+<div class="btns"><button class="btn" id="prev">이전</button><button class="btn" id="restart">처음부터</button><button class="btn" id="btn-home">다른 상황</button></div>
+</div>
+<div class="dots" id="dots"></div>
+<div class="stage" id="stage"><div class="canvas" id="canvas"></div></div>
+<div id="finish"></div>
+</div>
+<p class="note">위 화면은 이해를 돕기 위한 예시이며 실제 화면과 다를 수 있습니다</p>
+<p class="note">PC 또는 스마트폰 가로 화면에서 더욱 잘 보여요</p>
+</div>
+</div>
+<script>
+(function(){
+var NAV=[['home','홈','🏠'],['status','전체현황·임시중지','📋'],['store','가게관리','🏪'],['stats','가게통계','📊'],'sep',['mkt','추천 마케팅','📣'],['instant','즉시할인','⚡'],['menusale','메뉴할인','🏷️'],'sep',['soldout','품절·숨김','📝'],['menu','메뉴관리','🍽️']];
+function selfShell(active,main){
+return '<div class="sh-head">배민셀프서비스 <span class="logo-chip">셀프</span></div><div class="sh-body"><aside class="sh-side"><div class="q-title">빠른 메뉴</div><div class="q-row">'+
+'<button class="q-item" id="q-hours"><div class="q-ic">⏰</div>영업시간</button><button class="q-item" id="q-holiday"><div class="q-ic">📅</div>휴무일</button><button class="q-item" id="q-area"><div class="q-ic">📍</div>배달지역</button></div>'+
+NAV.map(function(n){return n==='sep'?'<div class="nv-sep"></div>':'<button class="nv'+(n[0]===active?' act':'')+'" id="nav-'+n[0]+'"><span class="ic">'+n[2]+'</span>'+n[1]+'</button>';}).join('')+
+'</aside><main class="sh-main">'+main+'</main></div>';
+}
+function homeMain(){return '<h2 class="pg">홈</h2><div class="minis"><div class="mini">오늘 주문<b>24건</b></div><div class="mini">오늘 취소<b>3건</b></div><div class="mini">평점<b>4.8</b></div></div><div class="hint">왼쪽 메뉴에서 설정할 항목을 골라보세요.</div>';}
+function tog(on,id){return '<button class="tgl'+(on?' on':'')+'"'+(id?' id="'+id+'"':'')+' aria-label="스위치"></button>';}
+// ---- 품절·숨김
+function soldMain(stage){
+var checked = stage>=2, sold = stage>=3;
+var item1 = sold
+? '<div class="it"><span class="chk"></span><div><div class="n"><span class="tag">품절</span><span class="dimtxt">국물떡볶이</span></div><div class="p dimtxt">20,000원</div></div><button class="rel">해제</button></div>'
+: '<div class="it"><button class="chk'+(checked?' on':'')+'" id="chk-1" aria-label="국물떡볶이 선택">'+(checked?'✓':'')+'</button><div><div class="n">국물떡볶이</div><div class="p">20,000원</div></div></div>';
+var cnt = checked&&!sold?1:0;
+return '<div class="store-h">예시 가게 ⌄</div><div class="store-s">분식</div>'+
+'<div class="line2"><h2 class="pg" style="margin:0">품절·숨김</h2><div class="srch">메뉴·옵션 검색 🔍</div></div>'+
+'<div class="pills"><span class="pl on">메뉴</span><span class="pl">옵션</span></div>'+
+'<div class="grp"><div class="gh"><span class="chk"></span>떡볶이</div>'+item1+
+'<div class="it"><span class="chk"></span><div><div class="n">국물닭발</div><div class="p">23,333원</div></div></div></div>'+
+'<div class="grp"><div class="gh"><span class="chk"></span>한 끼 식사로 가능한 분식 베스트셀러</div><div class="it"><span class="chk"></span><div><div class="n"><span class="tag">숨김</span><span class="dimtxt">국물떡볶이</span></div><div class="p dimtxt">14,500원</div></div><button class="rel">해제</button></div></div>'+
+'<div class="bar"><span>선택한 메뉴 <em>'+cnt+'개</em>를</span><span><button class="bb2'+(cnt?' en':'')+'">숨김</button><button class="bb2 pri'+(cnt?' en':'')+'" id="btn-sold">품절</button></span></div>';
+}
+// ---- 전체현황·임시중지
+function pauseMain(on){
+return '<div class="bx"><div class="line2"><div><h3>전체 영업임시중지</h3><div class="s">고객에게 어떻게 보이나요? ⓘ</div></div>'+tog(false)+'</div></div>'+
+'<div class="bx"><div style="display:flex;gap:14px;align-items:center"><div class="avatar">배달의민족</div><div><div style="font-weight:800;font-size:17px">예시 가게</div><div class="s">분식</div></div></div>'+
+'<div class="kv"><span class="k">운영시간</span>'+(on?'<span class="pill o">임시중지</span> 잠시 쉬어가요':'<span class="pill g">운영중</span> 운영시간이에요')+'</div>'+
+'<div class="kv"><span class="k">광고·서비스</span><span class="u">이용안함</span></div>'+
+'<div class="kv"><span class="k">임시중지</span><b>'+(on?'ON':'OFF')+'</b>'+tog(on,'tg-pause')+'</div></div>'+
+(on?'<div class="toast3">임시중지를 켰어요. 새 주문이 잠시 멈추니 밀린 주문부터 처리해 보세요.</div>':'<div class="hint">가게가 여러 곳이라면 위의 ‘전체 영업임시중지’로 한 번에 멈출 수 있어요.</div>');
+}
+// ---- 영업시간
+function hoursMain(done){
+var days=['월','화','수','목','금','토','일'];
+var rows=days.map(function(d,i){
+return '<div class="tr"><div><span class="day'+(i>=5?' r':'')+'">'+d+'</span>'+((i===0&&done)?'10:00 ~ 22:00':'24시간 영업')+'</div><div>설정안함</div><div>설정안함</div><div style="text-align:right"><button class="chg"'+(i===0?' id="chg-mon"':'')+'>변경</button></div></div>';
+}).join('');
+return '<div class="tabs2"><button class="tb">기본정보</button><button class="tb act">운영정보</button><button class="tb">주문정보</button><button class="tb">배달정보</button><button class="prev-btn">🏪 가게 미리보기</button></div>'+
+'<div class="bx"><h3 style="margin-bottom:8px">영업시간</h3><div class="tbl"><div class="tr th"><div>요일 및 시간</div><div>주문유형별 운영시간</div><div>휴게시간</div><div></div></div>'+rows+'</div>'+
+'<div class="info"><b>ⓘ 영업시간 정책을 확인해주세요</b>주문유형별 운영시간 및 휴게시간은 영업시간 이내로 설정 가능하며 영업시간 변경 시 자동으로 보정돼요.</div></div>'+
+(done?'<div class="toast2" style="left:32px;right:32px;bottom:14px">월요일 영업시간을 수정했어요. 쉬는 시간과 휴무일도 함께 확인해 보세요.</div>':'');
+}
+function hoursModal(){
+return '<div class="modal"><div class="dlg"><h4>월요일 영업시간 변경</h4><p>실제로 주문을 받을 수 있는 시간으로 맞춰 주세요.</p><div class="dl"><div class="sel"><span>시작</span><b>10:00 ⌄</b></div><div class="sel"><span>종료</span><b>22:00 ⌄</b></div></div><div class="dact"><button class="fb">취소</button><button class="fb pri" id="btn-save">저장</button></div></div></div>';
+}
+// ---- 배달지역
+function areaMain(mode,km){
+var r=km*24;
+var chips=[1.5,3,4,5].map(function(k){return '<button class="rc'+(k===km?' on':'')+'" '+(k===3?'id="rc-3"':'')+'>'+k+'km</button>';}).join('');
+var svg='<svg viewBox="0 0 800 250" width="100%" height="250" preserveAspectRatio="xMidYMid slice"><path d="M420 0 C440 40 470 60 520 70 L600 78 C640 82 660 100 680 130 L780 180 L800 250" stroke="#f6e7a8" stroke-width="12" fill="none"/><circle cx="400" cy="130" r="'+r+'" fill="rgba(47,107,240,.12)" stroke="#2f6bf0" stroke-width="2"/><rect x="345" y="86" width="110" height="30" rx="15" fill="#2a2a2a"/><text x="400" y="106" fill="#fff" font-size="14" text-anchor="middle" font-weight="700">가게 위치</text><circle cx="400" cy="130" r="4" fill="#2a2a2a"/></svg>';
+return '<div class="tabs2"><button class="tb">기본정보</button><button class="tb">운영정보</button><button class="tb">주문정보</button><button class="tb act">배달정보</button><button class="prev-btn">🏪 가게 미리보기</button></div>'+
+'<div style="font-weight:700;font-size:15px;margin-bottom:8px">배달방식에 따른 세부항목을 설정해주세요</div><div class="seg2"><div class="on">가게배달</div><div>배민배달(알뜰·한집)</div></div>'+
+'<div class="bx"><div class="line2"><h3>배달지역</h3><button class="edit" id="btn-edit">✎ 변경</button></div><div class="mapbox">'+(mode>=1?'<div class="rchips">'+chips+'</div>':'<div class="rchips"><button class="rc">1.5km</button><button class="rc">3km</button><button class="rc on">4km</button><button class="rc">5km</button></div>')+svg+'</div></div>'+
+'<div class="info"><b>ⓘ 배달 지역 안내</b>가게배달은 기본적으로 <b style="display:inline">4km 반경</b> 내 고객에게 노출돼요.</div>'+
+(mode>=2?'<div class="toast2" style="left:32px;right:32px;bottom:14px">배달지역을 '+km+'km로 줄였어요. 날씨가 좋아지면 원래 반경으로 되돌려 주세요.</div>':'');
+}
+// ---- 주문접수 (dark)
+function recvShell(rail,sub,main){
+var rails=[['home','홈','🏠'],['proc','처리중','🧾'],['hist','주문내역','✅'],['shop','배민상회','🥬'],['set','설정','⚙️']];
+var subs=[['prog','프로그램 설정','🖥️'],['ops','운영 설정','🧩'],['rider','배달대행사 설정','🛵'],['prn','프린터 설정','🖨️'],['rcp','영수증 설정','🧾'],['alarm','알림 설정','🔔'],['test','테스트 주문','📄'],['perm','기기 권한','⚙️']];
+return '<div class="rv-head">배민주문접수 <span class="rv-st">준비중 ⌄</span><span class="rv-conn">연결됨</span></div><div class="rv-body"><div class="rv-rail">'+
+rails.map(function(r){return '<button class="rv-it'+(r[0]===rail?' act':'')+'" id="rail-'+r[0]+'"><span class="ic">'+r[2]+'</span>'+r[1]+'</button>';}).join('')+
+'</div><div class="rv-panel">'+(rail==='set'?'<div class="rv-sub">'+subs.map(function(s){return '<button class="sb'+(s[0]===sub?' act':'')+'" id="sub-'+s[0]+'"><span>'+s[2]+'</span>'+s[1]+'</button>';}).join('')+'</div>':'')+
+'<div class="rv-main">'+main+'</div></div></div>';
+}
+function recvHome(){return '<h2 class="pg">홈</h2><div class="minis"><div class="mini">신규 주문<b>0건</b></div><div class="mini">처리중<b>0건</b></div><div class="mini">오늘 완료<b>24건</b></div></div><div class="hint">주문 알림을 놓치지 않도록 왼쪽 아래 ‘설정’에서 알림음을 확인해 보세요.</div>';}
+function recvBlank(){return '<div class="hint" style="margin-top:20px">설정할 항목을 골라보세요.</div>';}
+function alarmMain(level,done){
+var segs=''; for(var i=1;i<=10;i++){segs+='<button class="vs'+(i<=level?' on':'')+'" '+(i===8?'id="vs-8"':'')+' aria-label="음량 '+i+'"></button>';}
+return '<div class="line2"><div><h3 style="margin:0;font-size:18px">알림 음량</h3><div class="s" style="color:#888;font-size:13px">알림 음량은 현재 사용중인 기기에만 적용돼요.</div></div><div style="display:flex;align-items:center;gap:8px;font-size:15px">음소거 '+tog(false)+'</div></div>'+
+'<div class="vol"><span style="font-size:20px">🔊</span>'+segs+'</div>'+
+'<h3 style="margin:6px 0 2px;font-size:18px">주문 알림음</h3><div style="color:#888;font-size:13px;margin-bottom:8px">주문 유형별로 알림음을 다르게 설정할 수 있어요.</div>'+
+'<div class="bx"><div class="rowx"><span>알뜰·한집배달</span><div class="sel">배민배달 <span>⌄</span></div></div><div class="rowx"><span>가게배달</span><div class="sel">배달의민족 주문~! <span>⌄</span></div></div></div>'+
+(done?'<div class="toast2">알림 음량을 높였어요. 테스트 주문으로 알림음이 잘 들리는지 확인해 보세요.</div>':'');
+}
+var GUIDES={
+soldout:{label:'재료소진 → 품절 설정', title:'품절, 이렇게 설정해요',
+steps:[
+{target:'nav-soldout',tip:'품절·숨김을 눌러보세요',render:function(){return selfShell('home',homeMain());}},
+{target:'chk-1',tip:'품절할 메뉴를 선택해 보세요',render:function(){return selfShell('soldout',soldMain(1));}},
+{target:'btn-sold',tip:'품절 버튼을 눌러보세요',render:function(){return selfShell('soldout',soldMain(2));}},
+{target:null,render:function(){return selfShell('soldout',soldMain(3));}}]},
+pause:{label:'주문폭주 → 영업임시중지', title:'영업임시중지, 이렇게 설정해요',
+steps:[
+{target:'nav-status',tip:'전체현황·임시중지를 눌러보세요',render:function(){return selfShell('home',homeMain());}},
+{target:'tg-pause',tip:'주문이 몰릴 땐 임시중지를 켜 보세요',render:function(){return selfShell('status',pauseMain(false));}},
+{target:null,render:function(){return selfShell('status',pauseMain(true));}}]},
+alarm:{label:'자동취소 → 알림음 설정', title:'알림음, 이렇게 설정해요',
+steps:[
+{target:'rail-set',tip:'설정을 눌러보세요',render:function(){return recvShell('home',null,recvHome());}},
+{target:'sub-alarm',tip:'알림 설정을 눌러보세요',render:function(){return recvShell('set',null,recvBlank());}},
+{target:'vs-8',tip:'알림 음량을 충분히 키워 보세요',render:function(){return recvShell('set','alarm',alarmMain(3,false));}},
+{target:null,render:function(){return recvShell('set','alarm',alarmMain(8,true));}}]},
+hours:{label:'미운영 시간 → 영업시간 설정', title:'영업시간, 이렇게 설정해요',
+steps:[
+{target:'q-hours',tip:'빠른 메뉴의 영업시간을 눌러보세요',render:function(){return selfShell('home',homeMain());}},
+{target:'chg-mon',tip:'실제와 다른 요일은 변경을 눌러보세요',render:function(){return selfShell('store',hoursMain(false));}},
+{target:'btn-save',tip:'실제 운영 시간으로 맞추고 저장해요',render:function(){return selfShell('store',hoursMain(false)+hoursModal());}},
+{target:null,render:function(){return selfShell('store',hoursMain(true));}}]},
+rain:{label:'우천 대비 → 가게배달반경 점검', title:'가게배달반경, 이렇게 설정해요',
+steps:[
+{target:'q-area',tip:'빠른 메뉴의 배달지역을 눌러보세요',render:function(){return selfShell('home',homeMain());}},
+{target:'btn-edit',tip:'비 오는 날엔 변경을 눌러 반경을 점검해요',render:function(){return selfShell('store',areaMain(0,4));}},
+{target:'rc-3',tip:'반경을 줄여 보세요',render:function(){return selfShell('store',areaMain(1,4));}},
+{target:null,render:function(){return selfShell('store',areaMain(2,3));}}]}
+};
+var GO={soldout:'',pause:'',alarm:'',hours:'',rain:''};
+var ORDER=['soldout','pause','alarm','hours','rain'];
+var cur=null, step=0;
+var $=function(id){return document.getElementById(id);};
+var HOOK={
+soldout:{tag:'재료소진 → 품절',thumb:['🍲','📦','😣'],bg:'#fff1dc',q:'하필 대량 주문이 들어온 순간, 그 메뉴가 떨어졌어요',
+frames:[
+{bg:'#fff4e0',cap:'점심 피크, 주문 알림이 쉴 새 없이 울려요',items:[['a','🔔',22,40,46,'ring'],['a','🔔',80,34,40,'ring'],['a','🍲',50,58,86,'bounce'],['g','신규 주문 +12',50,14,'']]},
+{bg:'#ffeede',cap:'그런데 인기 메뉴 재료가 하필 지금 똑 떨어졌어요',items:[['a','🥣',34,58,80,'shake'],['g','재고 0',34,26,'red'],['a','🧑‍🍳',70,58,72,'bounce'],['b','어? 국물이 다 떨어졌네…',66,20,'']]},
+{bg:'#ffe6e6',cap:'하필 그 메뉴가 들어간 대량 주문이 접수됐어요',items:[['b','🧾 국물떡볶이 × 10 (단체 주문)',50,20,''],['a','😳',50,62,88,'shake']]},
+{bg:'#ffdada',cap:'받아놓고 취소… 손님도, 저도 속상해요',items:[['g','❌ 재료소진 취소 1건',50,14,'red'],['a','😣',50,56,92,'shake'],['b','아… 받아놓고 취소라니, 너무 아까워',50,88,'']]},
+{bg:'#e3f4f3',cap:'그럼 어떻게 해결하지? 🤔',items:[['b','미리 막을 방법, 없을까?',50,18,'soft'],['a','🤔',50,58,96,'bounce']]}]},
+pause:{tag:'주문폭주 → 영업임시중지',thumb:['🔔','🍳','⏰'],bg:'#ffe9e0',q:'주문은 쏟아지는데 손이 도저히 따라가지 못해요',
+frames:[
+{bg:'#fff4e0',cap:'주문 알림이 멈추지 않고 계속 울려요',items:[['a','🔔',25,45,50,'ring'],['a','🔔',50,52,66,'ring'],['a','🔔',76,42,46,'ring'],['g','신규 주문 +9',50,14,'']]},
+{bg:'#ffe9e2',cap:'주방은 이미 한계… 조리가 자꾸 밀려요',items:[['a','🍳',38,58,84,'shake'],['a','🧾',72,56,64,'float'],['g','대기 주문 15건',50,14,'red']]},
+{bg:'#ffe0e0',cap:'기다리다 지친 손님의 불만이 늘어나요',items:[['a','😥',28,60,78,'bounce'],['b','왜 이렇게 오래 걸려요?',34,22,''],['a','⭐',72,58,52,'shake'],['g','예상 70분',72,28,'red']]},
+{bg:'#e3f4f3',cap:'그럼 어떻게 해결하지? 🤔',items:[['b','새 주문만 잠깐 멈출 수는 없을까?',50,18,'soft'],['a','🤔',50,58,96,'bounce']]}]},
+alarm:{tag:'자동취소 → 알림음',thumb:['🧽','📱','🔇'],bg:'#e6edff',q:'설거지하고 왔더니 자동취소가 2건이나 되어 있었어요',
+frames:[
+{bg:'#e6f0ff',cap:'주방 안쪽에서 설거지에 한창이에요',items:[['a','🧽',32,58,82,'bounce'],['a','🍽️',68,58,72,'float'],['a','🫧',48,28,40,'float'],['b','조금만 더 하면 끝이다~',50,14,'']]},
+{bg:'#eef0f3',cap:'그 사이 새 주문이 들어왔는데, 알림음이 들리지 않았어요',items:[['g','새 주문 도착!',50,14,''],['a','📱',46,58,84,'shake'],['a','🔇',70,40,42,'pop']]},
+{bg:'#ffe3e3',cap:'돌아와 보니 자동취소가 2건이나 되어 있어요',items:[['a','😳',28,60,78,'shake'],['a','📱',66,56,80,''],['g','자동취소 2건',66,24,'red']]},
+{bg:'#ffd9d9',cap:'열심히 일했는데 주문을 놓치다니… 정말 분해요',items:[['a','😤',50,56,92,'shake'],['b','분명 계속 일하고 있었는데!',50,16,'']]},
+{bg:'#e3f4f3',cap:'그럼 어떻게 해결하지? 🤔',items:[['b','다음엔 소리가 확실히 들리게 하려면?',50,18,'soft'],['a','🤔',50,58,96,'bounce']]}]},
+hours:{tag:'미운영 시간 → 영업시간',thumb:['🌙','📱','❌'],bg:'#e9e4ff',q:'문 닫은 뒤에 들어온 주문, 놓쳐서 취소됐어요',
+frames:[
+{bg:'#e8e4fb',cap:'오늘 장사 끝! 문 닫고 마감 청소 중이에요',items:[['a','🌙',80,24,58,'float'],['a','🧹',32,58,80,'bounce'],['a','🏪',64,58,72,''],['g','영업 종료',50,14,'']]},
+{bg:'#e6edff',cap:'그런데 앱에는 아직 "24시간 영업"으로 되어 있어요',items:[['a','📱',50,58,84,'shake'],['g','앱: 24시간 영업',50,14,''],['b','새벽 1시에 주문이 들어왔어요!',50,86,'']]},
+{bg:'#ffe3e3',cap:'아침에 확인해 보니 영업시간 사유 취소가 쌓여 있어요',items:[['a','☀️',20,26,52,'float'],['a','😵',50,60,86,'shake'],['g','영업시간 외 취소 3건',50,16,'red']]},
+{bg:'#e3f4f3',cap:'그럼 어떻게 해결하지? 🤔',items:[['b','앱 영업시간을 실제와 맞추려면?',50,18,'soft'],['a','🤔',50,58,96,'bounce']]}]},
+rain:{tag:'우천 대비 → 배달반경',thumb:['🌧️','🛵','😓'],bg:'#dbe8f5',q:'비 오는 날, 먼 곳 주문까지 배달하려니 너무 힘들어요',
+frames:[
+{bg:'#dbe8f5',rain:1,cap:'갑자기 비가 쏟아져요',items:[['a','🌧️',50,24,90,'float'],['a','🏪',50,66,78,'']]},
+{bg:'#cfe0f0',rain:1,cap:'가게배달은 먼 거리 주문까지 계속 들어와요',items:[['a','🛵',32,62,84,'shake'],['a','🗺️',72,58,72,'float'],['g','배달 거리 4km',50,16,''],['b','이 비에 4km는 너무 멀어…',50,88,'']]},
+{bg:'#ffe3e3',cap:'배달은 늦어지고 음식은 식어가요',items:[['a','🥡',28,60,72,'float'],['a','😓',70,58,86,'shake'],['g','배달 지연 · 고객 문의',50,16,'red']]},
+{bg:'#e3f4f3',cap:'그럼 어떻게 해결하지? 🤔',items:[['b','비 오는 날엔 배달 반경을 줄여볼까?',50,18,'soft'],['a','🤔',50,58,96,'bounce']]}]}
+};
+var hooks=$('hooks');
+ORDER.forEach(function(k){
+var h=HOOK[k], b=document.createElement('button'); b.className='hcard'; b.dataset.k=k;
+b.innerHTML='<div class="hth" style="background:'+h.bg+'">'+h.thumb.map(function(e){return '<span>'+e+'</span>';}).join('')+'</div><span class="htag">'+h.tag+'</span><div class="hq">'+h.q+'</div><div class="hgo">이야기 보기 →</div>';
+hooks.appendChild(b);
+});
+hooks.addEventListener('click',function(e){var t=e.target.closest('[data-k]'); if(t) openStory(t.dataset.k);});
+var sk=null, sf=0, stimer=null;
+function sitem(it){
+if(it[0]==='a') return '<div class="actor" style="left:'+it[2]+'%;top:'+it[3]+'%;font-size:'+it[4]+'px"><i class="a-'+(it[5]||'none')+'">'+it[1]+'</i></div>';
+return '<div class="'+(it[0]==='b'?'bub':'bdg')+' '+(it[4]||'')+'" style="left:'+it[2]+'%;top:'+it[3]+'%">'+it[1]+'</div>';
+}
+function drops(){var d='';for(var i=0;i<26;i++){d+='<span class="drop" style="left:'+(Math.random()*100).toFixed(1)+'%;animation-delay:'+(Math.random()).toFixed(2)+'s;animation-duration:'+(0.7+Math.random()*0.5).toFixed(2)+'s"></span>';}return d;}
+function openStory(k){
+sk=k; sf=0;
+document.querySelectorAll('.hcard').forEach(function(n){n.classList.toggle('on',n.dataset.k===k);});
+$('player').hidden=true; $('storyBox').hidden=false;
+var F=HOOK[k].frames;
+$('story').innerHTML=F.map(function(f){return '<div class="fr" style="background:'+f.bg+'"><div class="sc">'+(f.rain?drops():'')+f.items.map(sitem).join('')+'</div><div class="cap">'+f.cap+'</div></div>';}).join('');
+$('storyBox').scrollIntoView({behavior:'smooth',block:'start'});
+showFrame(0); autoplay();
+}
+function showFrame(i){
+var F=HOOK[sk].frames; sf=i;
+var frs=$('story').children;
+for(var j=0;j<frs.length;j++) frs[j].classList.toggle('on',j===i);
+$('sdots').innerHTML=F.map(function(_,j){return '<div class="dot'+(j<=i?' on':'')+'"></div>';}).join('');
+var last=i===F.length-1;
+$('scta').innerHTML=last?'<div class="finish"><h3>그럼 어떻게 해결하지? 🤔</h3><p>직접 눌러보면 1분이면 끝나요.</p><button class="fb pri" id="s-go">해결 방법 보러 가기 →</button></div>':'';
+if(last){ clearInterval(stimer); $('s-go').onclick=startSim; }
+}
+function autoplay(){
+clearInterval(stimer);
+stimer=setInterval(function(){ if(sf<HOOK[sk].frames.length-1) showFrame(sf+1); else clearInterval(stimer); },3000);
+}
+$('story').onclick=function(){ if(sk && sf<HOOK[sk].frames.length-1){ showFrame(sf+1); autoplay(); } };
+$('s-replay').onclick=function(){ showFrame(0); autoplay(); };
+$('s-skip').onclick=function(){ showFrame(HOOK[sk].frames.length-1); };
+function startSim(){ clearInterval(stimer); $('storyBox').hidden=true; $('player').hidden=false; open(sk,false); }
+$('btn-home').onclick=function(){ $('player').hidden=true; document.querySelectorAll('.hcard').forEach(function(n){n.classList.remove('on');}); document.querySelector('h1').scrollIntoView({behavior:'smooth',block:'start'}); };
+function open(k,init){
+cur=k; step=0;
+document.querySelectorAll('.hcard').forEach(function(n){n.classList.toggle('on',n.dataset.k===k);});
+$('ptitle').textContent=GUIDES[k].title;
+render();
+if(!init) $('player').scrollIntoView({behavior:'smooth',block:'start'});
+}
+function fit(){
+var stage=$('stage'), cv=$('canvas');
+var sc=Math.min(1,stage.clientWidth/1000);
+cv.style.transform='scale('+sc+')';
+stage.style.height=(640*sc)+'px';
+return sc;
+}
+function render(){
+var g=GUIDES[cur], s=g.steps[step], cv=$('canvas');
+cv.innerHTML=s.render();
+var sc=fit();
+$('dots').innerHTML=g.steps.map(function(_,i){return '<div class="dot'+(i<=step?' on':'')+'"></div>';}).join('');
+$('prev').disabled=step===0;
+var fin=$('finish'); fin.innerHTML='';
+if(s.target){
+var t=$(s.target);
+if(t){
+t.classList.add('hl');
+t.addEventListener('click',function(e){e.stopPropagation(); if(step<g.steps.length-1){step++;render();}});
+position(t,s.tip,sc);
+}
+cv.onclick=function(e){
+if(e.target.closest('.hl')||e.target.closest('.tip')) return;
+cv.classList.remove('shake'); void cv.offsetWidth; cv.classList.add('shake');
+};
+} else {
+cv.onclick=null;
+fin.innerHTML='<div class="finish"><h3>이제 직접 설정해 볼까요?</h3><p>설정은 1분이면 끝나요. 취소를 줄이면 고객 불편도, 가게 노출 걱정도 줄어요.</p><button class="fb pri" id="go">즉시 설정해요</button><button class="fb" id="other">다른 가이드 보기</button></div>';
+$('go').onclick=function(){var u=GO[cur]; if(u){window.open(u,'_blank');}else{alert('설정 화면 링크 연결 예정입니다.');}};
+$('other').onclick=function(){document.querySelector('h1').scrollIntoView({behavior:'smooth',block:'start'});};
+}
+}
+function position(t,text,sc){
+var cv=$('canvas'), tip=document.createElement('div');
+tip.className='tip'; tip.innerHTML='<span>'+text+'</span><button aria-label="닫기">×</button>';
+cv.appendChild(tip);
+tip.querySelector('button').onclick=function(e){e.stopPropagation();tip.remove();};
+var cr=cv.getBoundingClientRect(), tr=t.getBoundingClientRect();
+var x=(tr.left-cr.left)/sc, y=(tr.top-cr.top)/sc, w=tr.width/sc, h=tr.height/sc;
+var tw=tip.offsetWidth, th=tip.offsetHeight, cx=x+w/2;
+var left=Math.max(10,Math.min(cx-tw/2,1000-tw-10));
+var top=y+h+16;
+if(top+th>630){top=y-th-16; tip.classList.add('up');}
+tip.style.left=left+'px'; tip.style.top=top+'px'; tip.style.setProperty('--ax',(cx-left)+'px');
+}
+$('prev').onclick=function(){ if(step>0){step--;render();} };
+$('restart').onclick=function(){ step=0; render(); };
+window.addEventListener('resize',function(){ if(cur) render(); });
+})();
+(function(){
+function fitFrame(){ try{ if(window.frameElement){ window.frameElement.style.height=(document.documentElement.scrollHeight+4)+'px'; } }catch(e){} }
+if(window.ResizeObserver){ new ResizeObserver(fitFrame).observe(document.body); }
+window.addEventListener('load',fitFrame); window.addEventListener('resize',fitFrame); setInterval(fitFrame,800);
+})();
+</script>
+
+</body>
+</html>
