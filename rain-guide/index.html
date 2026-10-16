@@ -165,7 +165,7 @@ return '<div class="'+(it[0]==='b'?'bub':'bdg')+' '+(it[4]||'')+'" style="left:'
 }
 function drops(){var d='';for(var i=0;i<26;i++){d+='<span class="drop" style="left:'+(Math.random()*100).toFixed(1)+'%;animation-delay:'+(Math.random()).toFixed(2)+'s;animation-duration:'+(0.7+Math.random()*0.5).toFixed(2)+'s"></span>';}return d;}
 function openStory(k){
-sk=k; sf=0;
+track('rg_card_'+k,{rg_scenario:k}); sk=k; sf=0;
 document.querySelectorAll('.hcard').forEach(function(n){n.classList.toggle('on',n.dataset.k===k);});
 $('player').hidden=true; $('storyBox').hidden=false;
 var F=HOOK[k].frames;
@@ -188,8 +188,8 @@ stimer=setInterval(function(){ if(sf<HOOK[sk].frames.length-1) showFrame(sf+1); 
 }
 $('story').onclick=function(){ if(sk && sf<HOOK[sk].frames.length-1){ showFrame(sf+1); autoplay(); } };
 $('s-replay').onclick=function(){ showFrame(0); autoplay(); };
-$('s-skip').onclick=function(){ showFrame(HOOK[sk].frames.length-1); };
-function startSim(){ clearInterval(stimer); $('storyBox').hidden=true; $('player').hidden=false; open(sk,false); }
+$('s-skip').onclick=function(){ track('rg_story_skip_'+sk,{rg_scenario:sk}); showFrame(HOOK[sk].frames.length-1); };
+function startSim(){ track('rg_story_done_'+sk,{rg_scenario:sk}); clearInterval(stimer); $('storyBox').hidden=true; $('player').hidden=false; open(sk,false); }
 $('btn-home').onclick=function(){ $('player').hidden=true; document.querySelectorAll('.hcard').forEach(function(n){n.classList.remove('on');}); document.querySelector('.hero').scrollIntoView({behavior:'smooth',block:'start'}); };
 var SUM={
 pause:[['언제 쓰나요','갑자기 주문이 몰리거나 배달환경으로 정상 운영이 어려울 때'],['어떻게 하나요','전체현황·임시중지에서 전체 영업임시중지를 켜고, 사유와 시간을 정해 [적용]을 눌러요'],['끝나면','상황이 나아지면 임시중지를 꺼서 주문을 다시 받아요']],
@@ -207,8 +207,24 @@ if(n===ORDER.length){$('osub').textContent='모든 상황을 확인하셨어요.
 function buildOutro(){
 var ol=$('olist'); ol.innerHTML='';
 ORDER.forEach(function(k){var li=document.createElement('li'); li.dataset.k=k; li.innerHTML='<span class="ck"></span><span>'+HOOK[k].tag+'</span>'; li.onclick=function(){openStory(k);}; ol.appendChild(li);});
-$('o-go').onclick=function(){var u=GO.rain; if(u){window.open(u,'_blank');}else{alert('설정 화면 링크 연결 예정입니다.');}};
+$('o-go').onclick=function(){track('rg_outro_go'); var u=GO.rain; if(u){window.open(u,'_blank');}else{alert('설정 화면 링크 연결 예정입니다.');}};
 $('o-top').onclick=function(){document.querySelector('.hero').scrollIntoView({behavior:'smooth',block:'start'});};
+}
+
+var TRK_SID=(function(){try{var v=sessionStorage.getItem('rgsid');if(!v){v=Math.random().toString(36).slice(2,10);sessionStorage.setItem('rgsid',v);}return v;}catch(e){return Math.random().toString(36).slice(2,10);}})();
+var TRK_DEV=(window.innerWidth<640)?'mobile':'desktop';
+var GA_ID='G-BVQGVEDG55', GA_OWN=false;
+function initOwnGA(){
+ if(GA_OWN) return; GA_OWN=true;
+ window.dataLayer=window.dataLayer||[]; window.gtag=function(){window.dataLayer.push(arguments);};
+ window.gtag('js',new Date()); window.gtag('config',GA_ID,{send_page_view:false});
+ var sc=document.createElement('script'); sc.async=true; sc.src='https://www.googletagmanager.com/gtag/js?id='+GA_ID; document.head.appendChild(sc);
+}
+function track(name,params){
+ params=params||{}; params.rg_session=TRK_SID; params.rg_device=TRK_DEV;
+ try{ if(window.parent && window.parent!==window && typeof window.parent.gtag==='function'){ window.parent.gtag('event',name,params); return; } }catch(e){}
+ if(/(^|\.)github\.io$/.test(location.hostname)){ initOwnGA(); window.gtag('event',name,params); return; }
+ try{ if(window.parent && window.parent!==window){ window.parent.postMessage({type:'rain_guide_event',name:name,params:params},'*'); } }catch(e){}
 }
 function open(k,init){
 cur=k; step=0;
@@ -237,7 +253,7 @@ var img=new Image(); img.className='shot'; img.alt=s.alt||''; img.src=IMG[s.img]
 if(!s.final){
 var hs=document.createElement('button'); hs.type='button'; hs.className='hs'; hs.setAttribute('aria-label',s.tip);
 hs.style.left=s.hs[0]+'%'; hs.style.top=s.hs[1]+'%'; hs.style.width=s.hs[2]+'%'; hs.style.height=s.hs[3]+'%';
-hs.addEventListener('click',function(e){e.stopPropagation(); if(step<g.steps.length-1){step++;render();}});
+hs.addEventListener('click',function(e){e.stopPropagation(); track('rg_step_'+cur+'_'+(step+1),{rg_scenario:cur,rg_step:step+1}); if(step<g.steps.length-1){step++;render();}});
 cv.appendChild(hs);
 var tip=document.createElement('div'); tip.className='tip'; tip.innerHTML='<span>'+s.tip+'</span><button aria-label="닫기">×</button>';
 cv.appendChild(tip);
@@ -252,15 +268,15 @@ cv.classList.remove('shake'); void cv.offsetWidth; cv.classList.add('shake');
 } else {
 if(s.toast){var t=document.createElement('div'); t.className='rtoast'; t.textContent=s.toast; cv.appendChild(t);}
 fin.innerHTML='<div class="finish"><h3>이제 직접 설정해 볼까요?</h3><p>설정은 1분이면 끝나요. 취소를 줄이면 고객 불편도, 가게 노출 걱정도 줄어요.</p><button class="fb pri" id="go">즉시 설정해요</button><button class="fb" id="other">다른 가이드 보기</button></div>';
-$('go').onclick=function(){var u=GO[cur]; if(u){window.open(u,'_blank');}else{alert('설정 화면 링크 연결 예정입니다.');}};
+$('go').onclick=function(){track('rg_go_'+cur,{rg_scenario:cur}); var u=GO[cur]; if(u){window.open(u,'_blank');}else{alert('설정 화면 링크 연결 예정입니다.');}};
 $('other').onclick=function(){$('hooks').scrollIntoView({behavior:'smooth',block:'start'});};
-$('fsum').innerHTML=sumHtml(cur); markDone(cur);
+$('fsum').innerHTML=sumHtml(cur); track('rg_done_'+cur,{rg_scenario:cur}); markDone(cur);
 }
 }
 $('prev').onclick=function(){ if(step>0){step--;render();} };
 $('restart').onclick=function(){ step=0; render(); };
 window.addEventListener('resize',function(){ if(cur) render(); });
-$('herosnow').innerHTML=drops(); buildOutro(); refreshProgress();
+$('herosnow').innerHTML=drops(); buildOutro(); refreshProgress(); track('rg_view');
 })();
 (function(){
 function fitFrame(){ try{ if(window.frameElement){ window.frameElement.style.height=(document.documentElement.scrollHeight+4)+'px'; } }catch(e){} }
