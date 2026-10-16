@@ -258,7 +258,7 @@ cv.appendChild(hs);
 var tip=document.createElement('div'); tip.className='tip'; tip.innerHTML='<span>'+s.tip+'</span><button aria-label="닫기">×</button>';
 cv.appendChild(tip);
 tip.querySelector('button').onclick=function(e){e.stopPropagation();tip.remove();};
-var place=function(){placeTip(tip,hs,cv);};
+var place=function(){placeTip(tip,hs,cv);}; window.__place=place;
 if(img.complete){place();} else {img.onload=place;}
 setTimeout(place,60);
 cv.onclick=function(e){
@@ -266,16 +266,16 @@ if(e.target.closest('.hs')||e.target.closest('.tip')) return;
 cv.classList.remove('shake'); void cv.offsetWidth; cv.classList.add('shake');
 };
 } else {
-if(s.toast){var t=document.createElement('div'); t.className='rtoast'; t.textContent=s.toast; cv.appendChild(t);}
+window.__place=null; if(s.toast){var t=document.createElement('div'); t.className='rtoast'; t.textContent=s.toast; cv.appendChild(t);}
 fin.innerHTML='<div class="finish"><h3>이제 직접 설정해 볼까요?</h3><p>설정은 1분이면 끝나요. 취소를 줄이면 고객 불편도, 가게 노출 걱정도 줄어요.</p><button class="fb pri" id="go">즉시 설정해요</button><button class="fb" id="other">다른 가이드 보기</button></div>';
 $('go').onclick=function(){track('rg_go_'+cur,{rg_scenario:cur}); var u=GO[cur]; if(u){window.open(u,'_blank');}else{alert('설정 화면 링크 연결 예정입니다.');}};
 $('other').onclick=function(){$('hooks').scrollIntoView({behavior:'smooth',block:'start'});};
-$('fsum').innerHTML=sumHtml(cur); track('rg_done_'+cur,{rg_scenario:cur}); markDone(cur);
+$('fsum').innerHTML=sumHtml(cur); if(window.__doneKey!==cur+':'+step){ window.__doneKey=cur+':'+step; track('rg_done_'+cur,{rg_scenario:cur}); } markDone(cur);
 }
 }
 $('prev').onclick=function(){ if(step>0){step--;render();} };
 $('restart').onclick=function(){ step=0; render(); };
-window.addEventListener('resize',function(){ if(cur) render(); });
+window.addEventListener('resize',function(){ if(window.__place) window.__place(); });
 $('herosnow').innerHTML=drops(); buildOutro(); refreshProgress(); track('rg_view');
 })();
 (function(){
