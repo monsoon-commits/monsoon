@@ -279,7 +279,7 @@ window.addEventListener('resize',function(){ if(window.__place) window.__place()
 $('herosnow').innerHTML=drops(); buildOutro(); refreshProgress(); track('rg_view');
 })();
 (function(){
-function fitFrame(){ try{ if(window.frameElement){ window.frameElement.style.height=(document.documentElement.scrollHeight+4)+'px'; } }catch(e){} }
+function fitFrame(){ try{ if(window.frameElement){ var w=document.querySelector('.wrap'); var h=Math.ceil(w?w.getBoundingClientRect().height:document.body.offsetHeight)+2; var c=parseInt(window.frameElement.style.height,10)||0; if(Math.abs(c-h)>1){ window.frameElement.style.height=h+'px'; } } }catch(e){} }
 if(window.ResizeObserver){ new ResizeObserver(fitFrame).observe(document.body); }
 window.addEventListener('load',fitFrame); window.addEventListener('resize',fitFrame); setInterval(fitFrame,800);
 })();
